@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import CreateTaskForm from './CreateTaskForm';
+import CreateTaskForm from './components/CreateTaskForm';
 
-const Navbar = ({ onTaskCreated }) => {
+const Navbar = () => {
 
     const [showForm, setShowForm] = useState(false);
 
@@ -22,7 +22,7 @@ const Navbar = ({ onTaskCreated }) => {
                     color: "white",
                     backgroundColor: "#f1356d",
                     borderRadius: "8px",
-                    border: "none",
+                    border: "none",            // optional: removes default border
                     cursor: "pointer"  
                 }}>
                     Create
@@ -34,7 +34,6 @@ const Navbar = ({ onTaskCreated }) => {
           <CreateTaskForm
             // Optional: pass a callback to close the form after submit
             onClose={() => setShowForm(false)}
-            onTaskCreated={onTaskCreated}
         />
         </div>
       )}

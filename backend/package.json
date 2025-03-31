@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "main": "backend.js",
   "scripts": {
-    "start": "node backend.js",
-    "dev": "nodemon backend.js"
+    "start": "node backend.js"
   },
   "keywords": [],
   "author": "",
@@ -12,8 +11,8 @@
   "description": "",
   "dependencies": {
     "cors": "^2.8.5",
-    "dotenv": "^16.4.7",
-    "express": "^5.1.0",
-    "mysql2": "^3.14.0"
+    "express": "^4.17.1",
+    "mysql2": "^2.3.3",
+    "dotenv": "^16.0.0"
   }
 }

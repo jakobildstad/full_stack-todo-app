@@ -1,33 +1,28 @@
 import { useState } from 'react';
 
-const CreateTaskForm = ({ onClose }) => {
+const CreateTaskForm = ({ onClose, onTaskCreated }) => {
     const [task, setTask] = useState('');
     const [date, setDate] = useState('');
     const [task_description, setTaskDescription] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-    
-        // 1. Send a POST request to the backend
-        fetch('http://localhost:4000/api/tasks', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ task, date, task_description })
-        })
-          .then(response => response.json())
-          .then(data => {
-            // 2. Log or use the response
-            console.log('Server response:', data);
-            // You might show a success message, or update state in a parent component, etc.
-    
-            // 3. Close the modal if everything is good
-            onClose();
-          })
-          .catch(error => {
+        
+        try {
+            const response = await fetch('http://localhost:4000/api/tasks', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ task, date, task_description })
+            });
+            
+            if (response.ok) {
+                onTaskCreated(); // Refresh the task list
+                onClose();      // Close the modal
+            }
+        } catch (error) {
             console.error('Error creating task:', error);
-            // Handle any errors
-          });
-      };
+        }
+    };
 
     return (
         <div className="form-container">

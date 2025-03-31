@@ -14,7 +14,7 @@ app.use(express.json());
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'password', // Bruk ditt faktiske passord her
+    password: 'password',
     database: 'todo_app'
 });
 
@@ -39,6 +39,35 @@ app.post('/api/tasks', (req, res) => {
             return;
         }
         res.status(201).json({ message: 'Task created successfully', id: result.insertId });
+    });
+});
+
+// Get all tasks
+app.get('/api/tasks', (req, res) => {
+    const query = 'SELECT * FROM tasks ORDER BY task_date ASC';
+    
+    db.query(query, (err, results) => {
+        if (err) {
+            console.error('Database error:', err);
+            res.status(500).json({ error: 'Failed to fetch tasks' });
+            return;
+        }
+        res.json(results);
+    });
+});
+
+// Delete a task
+app.delete('/api/tasks/:id', (req, res) => {
+    const taskId = req.params.id;
+    const query = 'DELETE FROM tasks WHERE id = ?';
+    
+    db.query(query, [taskId], (err, result) => {
+        if (err) {
+            console.error('Database error:', err);
+            res.status(500).json({ error: 'Failed to delete task' });
+            return;
+        }
+        res.json({ message: 'Task deleted successfully' });
     });
 });
 
