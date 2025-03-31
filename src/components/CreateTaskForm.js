@@ -7,10 +7,27 @@ const CreateTaskForm = ({ onClose }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Here you'll eventually handle the form submission
-        console.log({ task, date, task_description });
-        onClose(); // Close the modal after submission
-    };
+    
+        // 1. Send a POST request to the backend
+        fetch('http://localhost:4000/api/tasks', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ task, date, task_description })
+        })
+          .then(response => response.json())
+          .then(data => {
+            // 2. Log or use the response
+            console.log('Server response:', data);
+            // You might show a success message, or update state in a parent component, etc.
+    
+            // 3. Close the modal if everything is good
+            onClose();
+          })
+          .catch(error => {
+            console.error('Error creating task:', error);
+            // Handle any errors
+          });
+      };
 
     return (
         <div className="form-container">

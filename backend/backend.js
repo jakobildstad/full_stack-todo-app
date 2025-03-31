@@ -1,7 +1,8 @@
+// Endre import-syntaksen til require siden du ikke har type: "module" i package.json
 const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
-require('dotenv').config();
+const dotenv = require('dotenv');
 
 const app = express();
 
@@ -13,8 +14,17 @@ app.use(express.json());
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'password',
+    password: 'password', // Bruk ditt faktiske passord her
     database: 'todo_app'
+});
+
+// Test database connection
+db.connect((err) => {
+    if (err) {
+        console.error('Error connecting to database:', err);
+        return;
+    }
+    console.log('Connected to MySQL database');
 });
 
 // Routes
@@ -32,7 +42,7 @@ app.post('/api/tasks', (req, res) => {
     });
 });
 
-const PORT = 5000;
+const PORT = 4000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
