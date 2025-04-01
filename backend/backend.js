@@ -35,7 +35,7 @@ db.connect((err) => {
 // GET route
 app.get('/api/tasks', (req, res) => {
     console.log('Tasks GET route hit!');  // Debug log
-    const query = 'SELECT * FROM tasks';
+    const query = 'SELECT * FROM tasks ORDER BY task_date ASC';
     
     db.query(query, (err, results) => {
         if (err) {

@@ -41,7 +41,8 @@ const Home = () => {
 
     return (
         <div className="home">
-            <h2>Tasks</h2>
+            <center><h1>Tasks</h1></center>
+            <br></br>
             {loading && <div>Loading tasks...</div>}
             {error && <div className="error">Error: {error}</div>}
             {!loading && !error && (
@@ -51,11 +52,18 @@ const Home = () => {
                     ) : (
                         tasks.map(task => (
                             <div key={task.id} className="task-card">
-                                <h3>{task.task}</h3>
-                                <p className="task-date">{task.task_date}</p>
-                                <p className="task-description">{task.task_description}</p>
+                              <h3>{task.task}</h3>
+                              
+                              {/* Format date nicely, e.g. "4/1/2025" */}
+                              <p className="task-date">
+                                Due: {new Date(task.task_date).toLocaleDateString()}
+                              </p>
+                              
+                              <p className="task-description">
+                                Description: {task.task_description}
+                              </p>
                             </div>
-                        ))
+                          ))
                     )}
                 </div>
             )}

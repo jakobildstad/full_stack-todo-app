@@ -243,3 +243,17 @@
     border-width: 0 3px 3px 0;
     transform: rotate(45deg);
 }
+
+.task-card {
+    background: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+  }
+  .task-card h3 {
+    margin: 0 0 0.5rem;
+  }
+  .task-card p {
+    margin: 0.2rem 0;
+  }

@@ -9,7 +9,7 @@ const Navbar = () => {
     setShowForm(true);
     };
 
-    return ( 
+    return (
         <nav className="navbar">
             <h1>The todo app</h1>
             <div className="links">
