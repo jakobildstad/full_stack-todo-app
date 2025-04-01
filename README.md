@@ -5,9 +5,9 @@ Reactodo app with frontend, backend and api. Leart HTTP calls, full stack struct
 There's more i could do, like implementing re-fetching when submitting form, making it prettier, making a "delete all marked" button and stuff. Gonna do something else now. 
 
 
-Note to self:
-npm run start
-cd backend 
+Note to self: \n
+npm run start \n
+cd backend \n
 node backend.js
 mysql.server start
 brew services start mysql
