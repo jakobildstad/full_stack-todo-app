@@ -7,21 +7,9 @@ const CreateTaskForm = ({ onClose, onTaskCreated }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
-        try {
-            const response = await fetch('http://localhost:4000/api/tasks', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ task, date, task_description })
-            });
-            
-            if (response.ok) {
-                onTaskCreated(); // Refresh the task list
-                onClose();      // Close the modal
-            }
-        } catch (error) {
-            console.error('Error creating task:', error);
-        }
+        // Here you'll eventually handle the form submission
+        console.log({ task, date, task_description });
+        onClose(); // Close the modal after submission
     };
 
     return (
