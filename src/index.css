@@ -257,3 +257,42 @@
   .task-card p {
     margin: 0.2rem 0;
   }
+
+  .task-card {
+    position: relative;
+    background: #f9f9f9;
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+  
+  .check-button {
+    margin-top: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    background: #eee;
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
+  
+  .checked-container {
+    margin-top: 0.5rem;
+  }
+  
+  .green-check {
+    color: green;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+  }
+  
+  .delete-text {
+    display: inline-block;
+    color: #f1356d;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-top: 0.3rem;
+    text-decoration: underline;
+  }
+  .delete-text:hover {
+    opacity: 0.8;
+  }

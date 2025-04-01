@@ -63,6 +63,24 @@ app.post('/api/tasks', (req, res) => {
     });
 });
 
+// DELETE route
+app.delete('/api/tasks/:id', (req, res) => {
+    const { id } = req.params;
+    console.log(`tasks DELETE route hit for id ${id}!`);  // Debug log
+    
+    const query = 'DELETE FROM tasks WHERE id = ?';
+
+    db.query(query, [id], (err, result) => {
+        if (err) {
+            console.error('Database error:', err);
+            return res.status(500).json({ error: 'Failed to delete task' });
+        }
+        // If result.affectedRows > 0, we know a row was deleted
+        console.log(`Deleted ${result.affectedRows} row(s)`);
+        res.json({ message: 'Task deleted successfully' });
+    });
+});
+
 // Start server
 const PORT = 3001;
 app.listen(PORT, () => {
